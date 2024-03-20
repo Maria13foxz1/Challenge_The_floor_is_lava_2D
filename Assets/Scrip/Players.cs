@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Players : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class Players : MonoBehaviour
     public float speed;
     public AudioSource audioSourceJump;
     public AudioSource audioSourceBreak;
+    public TextMeshProUGUI GameOverText;
 
     private void Start()
     {
@@ -45,6 +48,8 @@ public class Players : MonoBehaviour
         }
         if (collision.gameObject.tag == "Floor")
         {
+            //Вивести текст 
+            GameOverText.gameObject.SetActive(true);
             audioSourceBreak.Play();
             Destroy(gameObject);
         }
