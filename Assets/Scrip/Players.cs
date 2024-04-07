@@ -13,6 +13,8 @@ public class Players : MonoBehaviour
     public AudioSource audioSourceJump;
     public AudioSource audioSourceBreak;
     public TextMeshProUGUI GameOverText;
+    public TMP_Text text;
+    float coin_count = 0;
 
     private void Start()
     {
@@ -48,10 +50,14 @@ public class Players : MonoBehaviour
         }
         if (collision.gameObject.tag == "Floor")
         {
-            //Вивести текст 
             GameOverText.gameObject.SetActive(true);
             audioSourceBreak.Play();
             Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Coin")
+        {
+            coin_count++;
+            text.text = "Coins: " + coin_count;
         }
     }
 }
